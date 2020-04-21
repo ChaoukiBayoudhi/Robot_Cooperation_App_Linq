@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="RobotDB">
+  <DataContextMoniker Name="/RobotDBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="7db76454-c773-43cb-a75c-7eaf7ffa0247" absoluteBounds="0.75, 0.875, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/RobotDBDataContext/Robot" />
+      <nestedChildShapes>
+        <elementListCompartment Id="580660fc-3816-4100-b44a-ccb9769b6c23" absoluteBounds="0.765, 1.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3d0c1fa5-f398-4575-8d7d-abd05c267dfa" absoluteBounds="0.75, 3.875, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/RobotDBDataContext/Task" />
+      <nestedChildShapes>
+        <elementListCompartment Id="822a5a3e-9c0b-48fb-ad48-272fde5ce3db" absoluteBounds="0.765, 4.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="78d29e00-0b01-4b1c-8da6-0d1512438801" absoluteBounds="3.5, 1, 2, 1.5785953776041664">
+      <DataClassMoniker Name="/RobotDBDataContext/TaskRobot" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b7ccfebe-4edc-4229-9067-a3f91e924ba1" absoluteBounds="3.515, 1.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 1.78929768880208); (3.5 : 1.78929768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RobotDBDataContext/Robot/Robot_TaskRobot" />
+      <nodes>
+        <classShapeMoniker Id="7db76454-c773-43cb-a75c-7eaf7ffa0247" />
+        <classShapeMoniker Id="78d29e00-0b01-4b1c-8da6-0d1512438801" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 4.76044840494792); (4.5 : 4.76044840494792); (4.5 : 2.57859537760417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/RobotDBDataContext/Task/Task_TaskRobot" />
+      <nodes>
+        <classShapeMoniker Id="3d0c1fa5-f398-4575-8d7d-abd05c267dfa" />
+        <classShapeMoniker Id="78d29e00-0b01-4b1c-8da6-0d1512438801" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

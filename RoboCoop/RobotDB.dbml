@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="RobotDB6" Class="RobotDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-7J9ODH9;Initial Catalog=RobotDB6;Integrated Security=True;Pooling=False" SettingsObjectName="RoboCoop.Properties.Settings" SettingsPropertyName="RobotDB6ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Robot" Member="Robots">
+    <Type Name="Robot">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="photo" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Robot_TaskRobot" Member="TaskRobots" ThisKey="Id" OtherKey="IdRobot" Type="TaskRobot" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Task" Member="Tasks">
+    <Type Name="Task">
+      <Column Name="Code" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="duration" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Task_TaskRobot" Member="TaskRobots" ThisKey="Code" OtherKey="CodeTask" Type="TaskRobot" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TaskRobot" Member="TaskRobots">
+    <Type Name="TaskRobot">
+      <Column Name="IdRobot" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CodeTask" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Robot_TaskRobot" Member="Robot" ThisKey="IdRobot" OtherKey="Id" Type="Robot" IsForeignKey="true" />
+      <Association Name="Task_TaskRobot" Member="Task" ThisKey="CodeTask" OtherKey="Code" Type="Task" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
