@@ -55,16 +55,31 @@ namespace RoboCoop
             {   try
                 {
                     //1- get the object by code
-                    Task t1 = Form1.dbRobot.Tasks.Single<Task>(x => x.Code == int.Parse(txt_code.Text));
-                    if (t1 == null)
+                     Task t1 = Form1.dbRobot.Tasks.Single<Task>(x => x.Code == int.Parse(txt_code.Text));
+                     if (t1 == null)
+                     {
+                         throw new Exception("veuiller verifier le code: tache n'existe pas");
+                     }
+                    //or
+                    /*Task t1 = new Task();
+                    t1.Code = int.Parse(txt_code.Text);*/
+                    //get all taskRobot's lines that have the same task's code to delete
+                    var lst = from x in Form1.dbRobot.TaskRobots
+                              where x.CodeTask == int.Parse(txt_code.Text)
+                              select x;
+                              
+                    foreach (var item in lst)
                     {
-                        throw new Exception("veuiller verifier le code: tache n'existe pas");
+                        
+                        Form1.dbRobot.TaskRobots.DeleteOnSubmit(item);
+
                     }
+
                     //2- delete the object from the table
                     Form1.dbRobot.Tasks.DeleteOnSubmit(t1);
                     //3- delete the line from the db
                     Form1.dbRobot.SubmitChanges();
-                    MessageBox.Show("Suppression avec succees");
+                    MessageBox.Show("Suppression effectuée avec succees");
                 }
                 catch (Exception ex)
                 {
@@ -81,12 +96,13 @@ namespace RoboCoop
                     {
                         throw new Exception("veuiller verifier le code: tache n'existe pas");
                     }
-                    //2- modify the object from the table
+                    //2- modify the object (object is a reference)
                     t1.name = txt_name.Text;
                     t1.duration = float.Parse(txt_duration.Text);
+                    //...
                     //3- updating the line from the db
                     Form1.dbRobot.SubmitChanges();
-                    MessageBox.Show("modification avec succees");
+                    MessageBox.Show("modification effectuée avec succees");
                 }
                 catch (Exception ex)
                 {

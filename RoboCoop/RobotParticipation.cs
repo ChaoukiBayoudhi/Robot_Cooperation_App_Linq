@@ -19,10 +19,13 @@ namespace RoboCoop
 
         private void RobotParticipation_Load(object sender, EventArgs e)
         {
+            //In SQL oracle
+            /*Select r.name,t.name, tr.startDate
+                from Robot r join TaskRobot tr on r.Id=tr.IdRobot
+                */
             var results = (from r in Form1.dbRobot.Robots
                         join tr in Form1.dbRobot.TaskRobots on r.Id equals tr.IdRobot
-                        join t in Form1.dbRobot.Tasks
-                            on tr.CodeTask  equals t.Code
+                        join t in Form1.dbRobot.Tasks  on tr.CodeTask  equals t.Code
                         orderby r.name descending, t.name 
                                        // or ascending
                        select new {
